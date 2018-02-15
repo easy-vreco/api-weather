@@ -1,11 +1,29 @@
 /*Style for the maps */
 body {
   overflow:hidden; 
+  background-image: url(../assets/images/clima.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh; 
+}
+
+.white {
+  color: #fff;
 }
 
 /* Styles for header */
 
-/* Styles for inputs and buttons */
+/* Styles principal */
+.prediction {
+  text-decoration: none;
+  list-style: none;
+}
+
+.articleClass {
+  list-style: none;
+  padding: 2em;
+  margin-top: 1em;
+}
 
 /* Styles for footer */
 .footer {

@@ -4,6 +4,7 @@
   "description": "> Recuerda seguir siempre esta [guía de estilos](https://github.com/Laboratoria/js-style-guide/)",
   "main": "index.js",
   "scripts": {
+    "build": "babel --presets env src -d public/js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/easy-vreco/api-weather/issues"
   },
-  "homepage": "https://github.com/easy-vreco/api-weather#readme"
+  "homepage": "https://github.com/easy-vreco/api-weather#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
 }
