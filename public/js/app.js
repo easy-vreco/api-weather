@@ -7,6 +7,7 @@ var initFunction = function initFunction() {
     var uvContainer = $('#uv-container');
     var pressureContainer = $('#pressure-container');
     var placeContainer = $('#place-container');
+    var predictionBtn = $('#prediction-btn');
     var todayShow = data.currently;
     console.log(todayShow);
 
@@ -16,6 +17,17 @@ var initFunction = function initFunction() {
     var humidityToday = $('<div class="col-auto mr-auto white">Humidity:</div> <div class="col-auto white">' + todayShow.humidity + '</div><br>').appendTo(humidityContainer);
     var uvToday = $('<div class="col-auto mr-auto white">UV Index:</div> <div class="col-auto white">' + todayShow.uvIndex + '</div>').appendTo(uvContainer);
     var presurreToday = $('<div class="col-auto mr-auto white">Pressure:</div> <div class="col-auto white">' + todayShow.pressure + '</div>').appendTo(pressureContainer);
+
+    // Predicciones de la semana
+    predictionBtn.on('click', function () {
+      var cardBodyContainer = $('#card-body-container');
+      var cardBodyInitial = $('#card-body-initial');
+      var weekDays = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+      var days = data.daily.data;
+      console.log(days);
+      cardBodyInitial.addClass('invisible');
+      cardBodyContainer.removeClass('invisible');
+    });
   };
 
   // debugger;

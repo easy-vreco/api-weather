@@ -18,6 +18,17 @@ let initFunction = () => {
   
     // Predicciones de la semana
     predictionBtn.on('click', function() {
+      let cardBodyContainer = $('#card-body-container');
+      let cardBodyInitial = $('#card-body-initial');
+      let weekDays = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+      cardBodyInitial.addClass('invisible');
+      cardBodyContainer.removeClass('invisible');
+      let days = data.daily.data;
+      console.log(days);
+      
+      $.each(weekDays, function(temperatureI) {
+        
+      });
       
     });
   };

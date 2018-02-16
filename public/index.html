@@ -28,13 +28,21 @@
     <div class="bd-example">
         <div class="card text-center" style="width: 18rem;">
           <img class="card-img-top" src="assets/images/clima-icon.png" alt="Card image cap">
-            <div class="card-body">
+            <div class="card-body" id="card-body-initial">
               <div class="row" id="place-container"></div>
               <div class="row" id="wind-container"></div>
               <div class="row" id="humidity-container"></div>
               <div class="row" id="uv-container"></div>
               <div class="row" id="pressure-container"></div>
             </div>
+
+            <div class="card-body invisible" id="card-body-container">
+              <div class="row" id="place-container"></div>
+              <div class="row" id="wind-container"></div>
+              <div class="row" id="humidity-container"></div>
+              <div class="row" id="uv-container"></div>
+              <div class="row" id="pressure-container"></div>
+            </div>  
             <div class="card-footer text-muted">
               <a href="#" class="btn btn-primary" id="prediction-btn">PREDICCIONES DE LA SEMANA</a>
             </div>
