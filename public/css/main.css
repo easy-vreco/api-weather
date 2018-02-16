@@ -14,6 +14,15 @@ body {
 /* Styles for header */
 
 /* Styles principal */
+.card {
+  background-color: rgba(177, 180, 178, 0.3);
+  padding: 1em;
+}
+
+.card-img-top {
+  width: 50%;
+}
+
 .prediction {
   text-decoration: none;
   list-style: none;

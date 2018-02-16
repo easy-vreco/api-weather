@@ -1,64 +1,45 @@
 'use strict';
 
-/* Variables para la API */
-var predictionLink = document.getElementById('prediction');
-var responseContainer = document.getElementById('initial-show');
-var url = 'https://api.darksky.net/forecast/d3aafabeb679f8b45c00be328ee36740/' + latitudeCoord + ',' + longitudeCoord;
-var latitudeCoord = void 0,
-    longitudeCoord = void 0;
+var initFunction = function initFunction() {
+  var weather = function weather(data) {
+    var windContainer = $('#wind-container');
+    var humidityContainer = $('#humidity-container');
+    var uvContainer = $('#uv-container');
+    var pressureContainer = $('#pressure-container');
+    var placeContainer = $('#place-container');
+    var todayShow = data.currently;
+    console.log(todayShow);
 
-var myUbication = function myUbication(positionF) {
-  var output = document.getElementById('output');
-  latitudeCoord = positionF.coords.latitude;
-  longitudeCoord = positionF.coords.longitude;
+    // Crear mis elementos 
+    var temperatureToday = $('<h4 class="card-title text-center white">' + todayShow.temperature + '\xB0</h4>').appendTo(placeContainer);
+    var windToday = $('<div class="col-auto mr-auto white">Wind:</div> <div class="col-auto white">' + todayShow.windSpeed + '</div><br>').appendTo(windContainer);
+    var humidityToday = $('<div class="col-auto mr-auto white">Humidity:</div> <div class="col-auto white">' + todayShow.humidity + '</div><br>').appendTo(humidityContainer);
+    var uvToday = $('<div class="col-auto mr-auto white">UV Index:</div> <div class="col-auto white">' + todayShow.uvIndex + '</div>').appendTo(uvContainer);
+    var presurreToday = $('<div class="col-auto mr-auto white">Pressure:</div> <div class="col-auto white">' + todayShow.pressure + '</div>').appendTo(pressureContainer);
+  };
 
-  // output.innerHTML = `Latitud: ${latitudeCoord} <br>Longitud: ${longitudeCoord}`;
+  // debugger;
+  var myUbication = function myUbication(position) {
+    var latitudeCoord = void 0,
+        longitudeCoord = void 0;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        latitudeCoord = position.coords.latitude;
+        longitudeCoord = position.coords.longitude;
+        console.log(latitudeCoord, longitudeCoord);
+        var proxy = 'https://cors-anywhere.herokuapp.com/';
+        var url = 'https://api.darksky.net/forecast/d3aafabeb679f8b45c00be328ee36740/' + latitudeCoord + ',' + longitudeCoord + '?lang=es';
+
+        $.ajax({
+          url: proxy + url,
+          success: weather
+        });
+      });
+    } else {
+      windows.alert('Tu navegador no soporta Geolocalización');
+    }
+  };
+  myUbication();
 };
 
-function findMe(event) {
-  event.preventDefault();
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(myUbication, error);
-  }
-}
-
-var error = function error(_error) {
-  window.alert('Tu navegador no soporta la API de geolocalizacion');
-};
-
-/* Método fetch */
-predictionLink.addEventListener('click', function (event) {
-  event.preventDefault();
-  // responseContainer.innerHTML = '';
-  fetch(url).then(function (response) {
-    console.log(response);
-    return response.json();
-  }).then(function (data) {
-    // debugger;
-    console.log(data.response);
-    var currentlyData = data.currently;
-    console.log(currentlyData);
-    var windSpeed = currentlyData.windSpeed;
-    var humidity = currentlyData.humidity;
-    var indexUV = currentlyData.uvIndex;
-    var pressure = currentlyData.pressure;
-
-    var li = document.createElement('li');
-    li.className = 'articleClass';
-    // li.innerHTML = ``;
-    li.innerText = windSpeed;
-    li.innerHTML = humidity;
-    li.innerHTML = indexUV;
-    li.innerHTML = pressure;
-    responseContainer.appendChild(li);
-  }).catch(function (error) {
-    console.log(error);
-  });
-});
-
-// window.addEventListener('load', findRoute);
-window.addEventListener('load', findMe);
-document.addEventListener('ready', function (event) {
-  event.preventDefault();
-  findMe(event);
-});
+window.onload = initFunction;

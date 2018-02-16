@@ -25,34 +25,21 @@
       </nav>
     </header>
     <!-- Contenido Principal -->
-    <main>
-      <section>
-        <div class="container-fluid section-container">
-          <div class="row">
-            <div class="col-sm-8 col-md-10 offset-md-1">
-               <div class="flex-container">
-                 <div id="output" class="white">
-                   <div class="initial-show">
-                     <p id="wind" class="white"></p>
-                     <p id="humidity" class="white"></p>
-                     <p id="UV" class="white"></p>
-                     <p id="pressure" class="white"></p>
-                   </div>
-
-                   <div class="second-show hidden"></div>
-                   <a href="#" class="prediction">PREDICCIÓN DE LA SEMANA</a>
-                 </div>
-              </div>
+    <div class="bd-example">
+        <div class="card text-center" style="width: 18rem;">
+          <img class="card-img-top" src="assets/images/clima-icon.png" alt="Card image cap">
+            <div class="card-body">
+              <div class="row" id="place-container"></div>
+              <div class="row" id="wind-container"></div>
+              <div class="row" id="humidity-container"></div>
+              <div class="row" id="uv-container"></div>
+              <div class="row" id="pressure-container"></div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-md-12">
+            <div class="card-footer text-muted">
+              <a href="#" class="btn btn-primary" id="prediction-btn">PREDICCIONES DE LA SEMANA</a>
             </div>
-          </div>
         </div>
-
-      </section>
-    </main>
+    </div>
 
     <footer class="flex-container footer">
       <p class="lead text-center">Copyright&copy;</p>
